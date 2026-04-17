@@ -8,6 +8,8 @@ on:
       - main
     tags:
       - 'v*.*.*'
+permissions:
+  contents: write   # ✅ THIS FIXES YOUR ISSUE
 
 env:
   DOCKER_IMAGE: vidhya101/currencyconverter
