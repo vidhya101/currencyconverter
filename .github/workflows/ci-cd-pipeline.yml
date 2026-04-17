@@ -8,7 +8,7 @@ on:
       - 'v*.*.*'
 
 env:
-  DOCKER_IMAGE: afakharany/currencyconverter
+  DOCKER_IMAGE: vidhya101/currencyconverter
 
 jobs:
   test:
