@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: currency-converter
-        image: vidhya101/currencyconverter:df20fd5
+        image: vidhya101/currencyconverter:141f5e7
         ports:
         - containerPort: 5555
         env:
