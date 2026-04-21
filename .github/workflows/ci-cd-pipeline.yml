@@ -89,10 +89,18 @@ jobs:
         run: |
           git pull --rebase origin main
           IMAGE_TAG=${{ needs.build-and-push.outputs.sha }}
+
           sed -i 's|image: '${{ env.DOCKER_IMAGE }}':.*|image: '${{ env.DOCKER_IMAGE }}':'"$IMAGE_TAG"'|' k8s/base/deployment.yaml
+
           git add k8s/base/deployment.yaml
-          git commit -m "Update image version to $IMAGE_TAG"
-          git push
+
+          # Only commit if changes exist
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update image version to $IMAGE_TAG"
+            git push
+          fi   
 
       - name: Install Argo CD CLI
         run: |
